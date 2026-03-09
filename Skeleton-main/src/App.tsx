@@ -5,12 +5,12 @@ import { ThankYouPage } from './ThankYouPage';
 const myRouterTree = createBrowserRouter([
   {
     path: '/',
-    element: <Navigate to="contact" />, // like a hashbang - redirection
+    element: <Navigate to="contact" />, // like a hashbang - redirection - simulating an event -- invoking an event on behalf of user
   },
   {
     path: '/contact',
     element: <ContactPage />,
-    action: contactPageAction,
+    // action: contactPageAction, // Action method
   },
   {
     path: '/thank-you/:name',
