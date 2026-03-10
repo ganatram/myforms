@@ -18,16 +18,26 @@ const {
   formState: { errors, isSubmitting, isSubmitSuccessfull },
 } = useForm(); // popular hook
 
-<Form>
+function handleFormSubmit(){
+
+}
+
+<Form onSubmit={handleSubmit(handleFormSubmit)}>
   <input
     type="text"
     id="name"
-    {...(register("name"), { required: "You must enter your name" })}
+    {...(register("name", { required: "You must enter your name" })}
   />
+
+  <div>{errors.name}</div>
+  <div>{errors.email}</div>
+
 
   <input
     type="text"
     id="name"
-    {...(register("email"), { required: "You must enter a proper email" })}
+    {...(register("email", { required: "You must enter a proper email" })}
   />
+
+  <button type='submit'> submit the form </button>
 </Form>;
