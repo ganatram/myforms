@@ -1,6 +1,7 @@
 /* eslint-disable prettier/prettier */
 import { useNavigate } from 'react-router-dom';
 import { useForm, FieldError } from 'react-hook-form';
+import { ValidationError } from './ValidationError';
 
 type Contact = {
   name: string;
@@ -11,13 +12,22 @@ type Contact = {
 
 export function ContactPage() {
   const fieldStyle = 'flex flex-col mb-2';
-  const { register, handleSubmit } = useForm<Contact>();
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<Contact>({ mode: 'onBlur', reValidateMode: 'onBlur' });
 
   const navigate = useNavigate();
 
   function customFormMethod(contact: Contact) {
     console.log('Submitted details:', contact);
     navigate(`/thank-you/${contact.name}`);
+  }
+
+  function getEditorStyle(fieldError: FieldError | undefined) {
+    return fieldError ? 'border-red-500' : '';
   }
 
   return (
@@ -31,10 +41,16 @@ export function ContactPage() {
           <input
             type="text"
             id="name"
+            //name = 'name'
+            // ref = {someVariableInRHF}
+            // onChange={someHandler}
+            //onBlur = {someHandler}
             {...register('name', {
               required: 'You must enter your name',
             })}
+            className={getEditorStyle(errors.name)}
           />
+          <ValidationError fieldError={errors.name} />
         </div>
 
         <div className={fieldStyle}>
@@ -49,7 +65,9 @@ export function ContactPage() {
                 message: 'Entered value does not match email format',
               },
             })}
+            className={getEditorStyle(errors.email)}
           />
+          <ValidationError fieldError={errors.email} />
         </div>
 
         <div className={fieldStyle}>
@@ -59,12 +77,14 @@ export function ContactPage() {
             {...register('reason', {
               required: 'You must enter the reason for contacting us',
             })}
+            className={getEditorStyle(errors.reason)}
           >
             <option value=""></option>
             <option value="Support">Support</option>
             <option value="Feedback">Feedback</option>
             <option value="Other">Other</option>
           </select>
+          <ValidationError fieldError={errors.reason} />
         </div>
 
         <div className={fieldStyle}>
@@ -81,3 +101,15 @@ export function ContactPage() {
     </div>
   );
 }
+
+// errors object
+/* 
+errors 
+{
+  email: {
+              required: 'You must enter your email address',
+              pattern: {
+                message: 'Entered value does not match email format',
+              },
+            }
+} */
