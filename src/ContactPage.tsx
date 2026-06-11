@@ -12,7 +12,8 @@ export function ContactPage() {
   const fieldStyle = 'flex flex-col mb-2';
   function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault(); // stop the reload process
-    console.log('callback function executed');
+    // console.log('callback function executed');
+    console.log('Submitted details: ', contact);
   }
   return (
     <div className="flex flex-col py-10 max-w-md mx-auto">
