@@ -1,6 +1,9 @@
+import { FormEvent } from 'react';
+
 export function ContactPage() {
   const fieldStyle = 'flex flex-col mb-2';
-  function handleSubmit() {
+  function handleSubmit(e: FormEvent<HTMLFormElement>) {
+    e.preventDefault();
     console.log('callback function executed');
   }
   return (
