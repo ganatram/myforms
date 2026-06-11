@@ -16,7 +16,7 @@ export function ContactPage() {
     formState: { errors },
   } = useForm<Contact>();
 
-  const navigate = useNavigate();
+  //const navigate = useNavigate();
 
   const fieldStyle = 'flex flex-col mb-2';
 
@@ -39,15 +39,15 @@ export function ContactPage() {
       <form onSubmit={handleSubmit(formCallBack)}>
         <div className={fieldStyle}>
           <label htmlFor="name">Your name</label>
-          <input type="text" id="name" name="name" required />
+          <input type="text" id="name" {...register('name')} />
         </div>
         <div className={fieldStyle}>
           <label htmlFor="email">Your email address</label>
-          <input type="email" id="email" name="email" required />
+          <input type="email" id="email" {...register('email')} />
         </div>
         <div className={fieldStyle}>
           <label htmlFor="reason">Reason you need to contact us</label>
-          <select id="reason" name="reason" required>
+          <select id="reason" {...register('reason')}>
             <option value=""></option>
             <option value="Support">Support</option>
             <option value="Feedback">Feedback</option>
@@ -56,7 +56,7 @@ export function ContactPage() {
         </div>
         <div className={fieldStyle}>
           <label htmlFor="notes">Additional notes</label>
-          <textarea id="notes" name="notes" />
+          <textarea id="notes" {...register('notes')} />
         </div>
         <div>
           <button type="submit" className="mt-2 h-10 px-6 font-semibold bg-black text-white">
