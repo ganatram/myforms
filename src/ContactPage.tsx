@@ -1,4 +1,6 @@
 import { FormEvent } from 'react';
+import { useForm } from 'react-hook-form';
+import { useNavigate } from 'react-router-dom';
 
 type Contact = {
   name: string;
@@ -8,8 +10,17 @@ type Contact = {
 };
 
 export function ContactPage() {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<Contact>();
+
+  const navigate = useNavigate();
+
   const fieldStyle = 'flex flex-col mb-2';
-  function handleSubmit(e: FormEvent<HTMLFormElement>) {
+
+  function onSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault(); // stop the reload process
     // console.log('callback function executed');
     const formData = new FormData(e.currentTarget);
@@ -25,7 +36,7 @@ export function ContactPage() {
     <div className="flex flex-col py-10 max-w-md mx-auto">
       <h2 className="text-3xl font-bold underline mb-3">Contact Us</h2>
       <p className="mb-3">If you enter your details we'll get back to you as soon as we can.</p>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={onSubmit}>
         <div className={fieldStyle}>
           <label htmlFor="name">Your name</label>
           <input type="text" id="name" name="name" required />
