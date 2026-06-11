@@ -28,15 +28,15 @@ export function ContactPage() {
       <form onSubmit={handleSubmit}>
         <div className={fieldStyle}>
           <label htmlFor="name">Your name</label>
-          <input type="text" id="name" name="name" />
+          <input type="text" id="name" name="name" required />
         </div>
         <div className={fieldStyle}>
           <label htmlFor="email">Your email address</label>
-          <input type="email" id="email" name="email" />
+          <input type="email" id="email" name="email" required />
         </div>
         <div className={fieldStyle}>
           <label htmlFor="reason">Reason you need to contact us</label>
-          <select id="reason" name="reason">
+          <select id="reason" name="reason" required>
             <option value=""></option>
             <option value="Support">Support</option>
             <option value="Feedback">Feedback</option>
