@@ -8,6 +8,7 @@ type Contact = {
 };
 
 export function ContactPage() {
+  const [contact, setContact] = useState<Contact>({ name: '', email: '', reason: '', notes: '' });
   const fieldStyle = 'flex flex-col mb-2';
   function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault(); // stop the reload process
