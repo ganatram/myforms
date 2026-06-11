@@ -1,9 +1,16 @@
-import { FormEvent } from 'react';
+import { FormEvent, useState } from 'react';
+
+type Contact = {
+  name: string;
+  email: string;
+  reason: string;
+  notes: string;
+};
 
 export function ContactPage() {
   const fieldStyle = 'flex flex-col mb-2';
   function handleSubmit(e: FormEvent<HTMLFormElement>) {
-    e.preventDefault();
+    e.preventDefault(); // stop the reload process
     console.log('callback function executed');
   }
   return (
