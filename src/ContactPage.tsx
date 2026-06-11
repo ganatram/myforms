@@ -20,23 +20,23 @@ export function ContactPage() {
 
   const fieldStyle = 'flex flex-col mb-2';
 
-  function onSubmit(e: FormEvent<HTMLFormElement>) {
-    e.preventDefault(); // stop the reload process
+  function formCallBack(contact: Contact) {
+    // e.preventDefault(); // stop the reload process
     // console.log('callback function executed');
-    const formData = new FormData(e.currentTarget);
+    /* const formData = new FormData(e.currentTarget);
     const contact = {
       name: formData.get('name'),
       email: formData.get('email'),
       reason: formData.get('reason'),
       notes: formData.get('notes'),
-    };
+    }; */
     console.log('Submitted details: ', contact);
   }
   return (
     <div className="flex flex-col py-10 max-w-md mx-auto">
       <h2 className="text-3xl font-bold underline mb-3">Contact Us</h2>
       <p className="mb-3">If you enter your details we'll get back to you as soon as we can.</p>
-      <form onSubmit={onSubmit}>
+      <form onSubmit={handleSubmit(formCallBack)}>
         <div className={fieldStyle}>
           <label htmlFor="name">Your name</label>
           <input type="text" id="name" name="name" required />
