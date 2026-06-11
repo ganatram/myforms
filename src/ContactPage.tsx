@@ -1,11 +1,13 @@
 export function ContactPage() {
   const fieldStyle = 'flex flex-col mb-2';
-
+  function handleSubmit() {
+    console.log('callback function executed');
+  }
   return (
     <div className="flex flex-col py-10 max-w-md mx-auto">
       <h2 className="text-3xl font-bold underline mb-3">Contact Us</h2>
       <p className="mb-3">If you enter your details we'll get back to you as soon as we can.</p>
-      <form>
+      <form onSubmit={handleSubmit}>
         <div className={fieldStyle}>
           <label htmlFor="name">Your name</label>
           <input type="text" id="name" />
@@ -28,7 +30,9 @@ export function ContactPage() {
           <textarea id="notes" />
         </div>
         <div>
-          <button className="mt-2 h-10 px-6 font-semibold bg-black text-white">Submit</button>
+          <button type="submit" className="mt-2 h-10 px-6 font-semibold bg-black text-white">
+            Submit
+          </button>
         </div>
       </form>
     </div>
