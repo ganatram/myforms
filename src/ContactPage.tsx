@@ -1,4 +1,4 @@
-import { useNavigate } from 'react-router-dom';
+// import { useNavigate } from 'react-router-dom';
 import { useForm, FieldError } from 'react-hook-form';
 import { ValidationError } from './ValidationError';
 
@@ -19,10 +19,10 @@ export function ContactPage() {
     mode: 'onBlur',
     reValidateMode: 'onBlur',
   });
-  const navigate = useNavigate();
+  //const navigate = useNavigate();
   function onSubmit(contact: Contact) {
     console.log('Submitted details:', contact);
-    navigate(`/thank-you/${contact.name}`);
+    // navigate(`/thank-you/${contact.name}`);
   }
   function getEditorStyle(fieldError: FieldError | undefined) {
     return fieldError ? 'border-red-500' : '';
