@@ -1,1 +1,1 @@
-//controlled forms - state hooks in react to store data from form controls --
+//controlled forms - please dont use state to collect and store data from form controls -- performance bottleleak
