@@ -1,7 +1,7 @@
 import { FormEvent, useState } from 'react';
 
 type Contact = {
-  name: string;
+  name: string; // 'sarah'
   email: string;
   reason: string;
   notes: string;
@@ -21,15 +21,23 @@ export function ContactPage() {
       <form onSubmit={handleSubmit}>
         <div className={fieldStyle}>
           <label htmlFor="name">Your name</label>
-          <input type="text" id="name" />
+          <input
+            type="text"
+            id="name"
+            onChange={(e) => setContact({ ...contact, name: e.target.value })}
+          />
         </div>
         <div className={fieldStyle}>
           <label htmlFor="email">Your email address</label>
-          <input type="email" id="email" />
+          <input
+            type="email"
+            id="email"
+            onChange={(e) => setContact({ ...contact, email: e.target.value })}
+          />
         </div>
         <div className={fieldStyle}>
           <label htmlFor="reason">Reason you need to contact us</label>
-          <select id="reason">
+          <select id="reason" onChange={(e) => setContact({ ...contact, reason: e.target.value })}>
             <option value=""></option>
             <option value="Support">Support</option>
             <option value="Feedback">Feedback</option>
@@ -38,7 +46,10 @@ export function ContactPage() {
         </div>
         <div className={fieldStyle}>
           <label htmlFor="notes">Additional notes</label>
-          <textarea id="notes" />
+          <textarea
+            id="notes"
+            onChange={(e) => setContact({ ...contact, notes: e.target.value })}
+          />
         </div>
         <div>
           <button type="submit" className="mt-2 h-10 px-6 font-semibold bg-black text-white">
